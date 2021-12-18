@@ -1,0 +1,35 @@
+@api = http://localhost:3000/tasks
+@apiusers = http://localhost:3000/users
+
+@apigastoscount =  http://localhost:3000/gastos/user/:id/count
+
+GET {{api}}/user/1
+###
+GET {{api}}/34
+###
+GET {{api}}/count
+###
+POST {{api}}
+Content-Type: application/json
+
+{
+    "title": "crear una app",
+    "description": "some description",
+    "userid": "1"
+}
+###
+DELETE {{api}}/4
+
+###
+PUT {{api}}/1
+Content-Type: application/json
+
+{
+    "title": "ahora dice esto"
+}
+###
+GET {{apiusers}}
+
+###
+GET {{apigastoscount}}
+
