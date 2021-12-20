@@ -2,6 +2,7 @@
 @apiusers = http://localhost:3000/users
 
 @apigastoscount =  http://localhost:3000/gastos/user/:id/count
+@apideudas =  http://localhost:3000/deudas
 
 GET {{api}}/user/1
 ###
@@ -32,4 +33,7 @@ GET {{apiusers}}
 
 ###
 GET {{apigastoscount}}
+
+###
+DELETE {{apideudas}}/4
 

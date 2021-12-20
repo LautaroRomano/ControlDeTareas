@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { useIsFocused } from '@react-navigation/core';
-import IngresosList from '../components/ingresosList';
-import GastosList from '../components/gastosList';
-import Layout from '../components/LayoutIngresos';
+import IngresosList from '../../components/seccionIngresos/ingresosList';
+import GastosList from '../../components/seccionIngresos/gastosList';
+import DeudasList from '../../components/seccionIngresos/deudasList';
+import Layout from '../../components/seccionIngresos/LayoutIngresos';
 
-import { getIngresosCount } from '../api'
-import { getGastosCount } from '../api'
+import { getIngresosCount } from '../../api'
+import { getGastosCount } from '../../api'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const IngresosScreen = ({ navigation, route }) => {
     let iddeusuario = route.params.params.iduser;
-    console.log('iduser: ' + iddeusuario)
+
 
     const [gastos, setGastos] = useState([]);
     const [ingresos, setIngresos] = useState([]);
     const [saldoneto, setSaldoneto] = useState([]);
     const [ganancia, setGanancia] = useState([]);
-    const [selectIngreso, setSelect] = useState([true]);
+    const [select, setSelect] = useState(['ingresos']);
 
     const loadGastos = async () => {
         const data = await getGastosCount(iddeusuario);
@@ -38,7 +39,7 @@ const IngresosScreen = ({ navigation, route }) => {
         } else {
             setGanancia(true);
         }
-        console.log('ganancia: ' + ganancia)
+        
     }
 
     const isFocus = useIsFocused();
@@ -60,22 +61,33 @@ const IngresosScreen = ({ navigation, route }) => {
                 </View>
             </View>
             <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={{paddingHorizontal: 10}} onPress={() => { setSelect(true) }}>
-                    {selectIngreso ? <Text style={styles.activateNavegacion} >Ingresos</Text> : <Text style={styles.navegacion} >Ingresos</Text>}
+                <TouchableOpacity style={{paddingHorizontal: 10}} onPress={() => { setSelect('ingresos') }}>
+                    {select==='ingresos' ? <Text style={styles.activateNavegacion} >Ingresos</Text> : <Text style={styles.navegacion} >Ingresos</Text>}
                 </TouchableOpacity>
-                <TouchableOpacity style={{paddingHorizontal: 10}} onPress={() => { setSelect(false) }}>
-                {selectIngreso ? <Text style={styles.navegacion} >Gastos</Text> : <Text style={styles.activateNavegacion} >Gastos</Text>}  
+
+                <TouchableOpacity style={{paddingHorizontal: 10}} onPress={() => { setSelect('gastos') }}>
+                {select==='gastos' ? <Text style={styles.activateNavegacion} >Gastos</Text> : <Text style={styles.navegacion} >Gastos</Text>}  
                 </TouchableOpacity>
+                
+                <TouchableOpacity style={{paddingHorizontal: 10}} onPress={() => { setSelect('deudas') }}>
+                {select==='deudas' ? <Text style={styles.activateNavegacion} >Deudas</Text> : <Text style={styles.navegacion} >Deudas</Text>}  
+                </TouchableOpacity>
+
             </View>
-            {selectIngreso ?
+            {select==='ingresos' ?
             
                 <View style={styles.containerList}>
                     <IngresosList iduser={iddeusuario} />
                 </View>
-                :
+                : select==='gastos' ?
                 <View style={styles.containerList}>
                     <GastosList iduser={iddeusuario} />
-                </View>}
+                </View>
+                :     
+                <View style={styles.containerList}>
+                    <DeudasList iduser={iddeusuario} />
+                </View>
+            }
 
         </Layout>
     )
@@ -139,7 +151,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#292929',
         paddingVertical: 5,
-        paddingHorizontal: 25,
+        paddingHorizontal: 15,
         backgroundColor: '#F9F7F7',
         borderRadius: 10
     },
@@ -147,7 +159,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#292929',
         paddingVertical: 5,
-        paddingHorizontal: 25,
+        paddingHorizontal: 15,
         backgroundColor: '#E7E4E4',
         borderRadius: 10
     }

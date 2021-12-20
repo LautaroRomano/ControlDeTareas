@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, StyleSheet, TouchableOpacity } from 'react-native'
-import TaskList from '../components/tasksList'
-import Layout from '../components/Layout'
+import TaskList from '../components/seccionTareas/tasksList'
+import Layout from '../components/seccionTareas/Layout'
 
 const HomeScreen = ({ navigation, route }) => {
   

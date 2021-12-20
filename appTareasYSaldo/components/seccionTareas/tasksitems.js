@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import {stylesItems} from '../styles/itemsStyles'
+import {stylesItems} from '../../styles/itemsStyles'
 const styles = stylesItems;
 
 const tasksitems = ({ tasks, handleDelete, iduser }) => {

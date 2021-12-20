@@ -2,14 +2,14 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import HomeScreen from './screens/HomeScreen'
 import TaskFromScreen from './screens/TaskFromScreen'
-import LoginScreen from './screens/LoginScreen'
-import RegistroScreen from './screens/RegistroScreen'
+import LoginScreen from './screens/seccionLogin/LoginScreen'
+import RegistroScreen from './screens/seccionLogin/RegistroScreen'
 import TabNavigator from './screens/TabNavigator'
 
-import ingresosFromScreen from './screens/ingresosFromScreen'
-import gastosFromScreen from './screens/gastosFromScreen'
+import ingresosFromScreen from './screens/seccionIngresos/ingresosFromScreen'
+import gastosFromScreen from './screens/seccionIngresos/gastosFromScreen'
+import deudasFromScreen from './screens/seccionIngresos/deudasFromScreen'
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -29,6 +29,12 @@ const App = () => {
             headerTitleStyle: { color: 'tomato' },
           })} />
           <Stack.Screen name="gastosFromScreen" component={gastosFromScreen}
+          options={({ navigation }) => ({
+            title: 'Ingresos',
+            headerStyle: { backgroundColor: '#F1F1F1' },
+            headerTitleStyle: { color: 'tomato' },
+          })} />
+          <Stack.Screen name="deudasFromScreen" component={deudasFromScreen}
           options={({ navigation }) => ({
             title: 'Ingresos',
             headerStyle: { backgroundColor: '#F1F1F1' },

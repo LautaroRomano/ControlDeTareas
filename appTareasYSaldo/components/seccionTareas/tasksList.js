@@ -3,7 +3,7 @@ import { FlatList, RefreshControl } from 'react-native'
 import { useIsFocused } from '@react-navigation/core';
 
 import TaskItem from './tasksitems';
-import { getTasks,deleteTask } from '../api';
+import { getTasks,deleteTask } from '../../api';
 
 const TaskList = ({iduser}) => { 
 

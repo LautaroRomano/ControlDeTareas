@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import { useIsFocused } from '@react-navigation/core';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Gastositems from './gastositems';
-import { getGastos, deleteGasto } from '../api';
+import { getGastos, deleteGasto } from '../../api';
 
 import { useNavigation } from '@react-navigation/native';
 

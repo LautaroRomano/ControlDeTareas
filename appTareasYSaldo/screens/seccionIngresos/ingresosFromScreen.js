@@ -2,14 +2,16 @@ import React, { useState,useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 
-import Layout from '../components/Layout';
-import {saveGasto,getGasto,updateGasto} from '../api';
+import Layout from '../../components/seccionTareas/Layout';
+import {saveIngreso,getIngreso,updateIngreso} from '../../api';
 
-const gastosFromScreen = ({navigation,route}) => {
+const ingresosFromScreen = ({navigation,route}) => {
 
     let idusuario = route.params.iduser;
 
-    const [gasto, setGasto] = useState({
+    console.log(route);
+
+    const [ingreso, setIngreso] = useState({ 
         title: '',
         precio: '',
         userid: idusuario
@@ -17,14 +19,14 @@ const gastosFromScreen = ({navigation,route}) => {
 
     const [editing, setEditing] = useState(false);
 
-    const handlerChange = (name, value) => setGasto({ ...gasto, [name]: value });
+    const handlerChange = (name, value) => setIngreso({ ...ingreso, [name]: value });
 
     const handleSubmit = async() => {
         try {
             if(editing){
-                await updateGasto(route.params.id,gasto)
+                await updateIngreso(route.params.id,ingreso)
             }else{
-                await saveGasto(gasto);
+                await saveIngreso(ingreso);
             }
             navigation.navigate('TabNavigator', { iduser: idusuario });
         } catch (error) {
@@ -34,11 +36,11 @@ const gastosFromScreen = ({navigation,route}) => {
 
     useEffect(() => {
         if(route.params && route.params.id){
-            navigation.setOptions({headerTitle: 'Actualizar Gasto'});
+            navigation.setOptions({headerTitle: 'Actualizar Ingreso'});
             setEditing(true);
             (async ()=>{
-                const gasto = await getGasto(route.params.id);
-                setGasto({title: gasto.title, precio: gasto.precio})
+                const ingreso = await getIngreso(route.params.id);
+                setIngreso({title: ingreso.title, precio: ingreso.precio})
             })();
         }
     }, []);
@@ -50,23 +52,23 @@ const gastosFromScreen = ({navigation,route}) => {
                 placeholder="Ingrese un titulo"
                 placeholderTextColor="#546574"
                 onChangeText={(text) => handlerChange('title', text)}
-                value={gasto.title}
+                value={ingreso.title}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese el valor"
                 placeholderTextColor="#546574"
                 onChangeText={(text) => handlerChange('precio', text)}
-                value={gasto.description}
+                value={ingreso.precio}
             />
             {
                 !editing ? ( 
                     <TouchableOpacity style={styles.btnSave} onPress={handleSubmit}>
-                        <Text style={styles.btnText}>Guardar Gasto</Text>
+                        <Text style={styles.btnText}>Guardar Ingreso</Text>
                     </TouchableOpacity>
                     ) : (
                         <TouchableOpacity style={styles.btnUpdate} onPress={handleSubmit}>
-                            <Text style={styles.btnText}>Actualizar Gasto</Text>
+                            <Text style={styles.btnText}>Actualizar Ingreso</Text>
                         </TouchableOpacity>
                     )
             }
@@ -110,4 +112,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default gastosFromScreen
+export default ingresosFromScreen

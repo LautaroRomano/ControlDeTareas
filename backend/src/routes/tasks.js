@@ -3,6 +3,7 @@ import { deleteTasks, getTaskCount, getTasks, getTask, saveTasks, updateTasks } 
 import {getUsers,saveUser} from '../controllers/users'
 import {getIngresos,getIngresosCount, getIngreso, deleteIngreso, saveIngreso, updateIngreso} from '../controllers/ingresos'
 import {getGastos,getGastosCount, getGasto, deleteGasto, saveGasto, updateGasto} from '../controllers/gastos'
+import {getDeudas, getDeuda, deleteDeuda, saveDeuda, updateDeuda} from '../controllers/deudas'
 
 
 const router = Router();
@@ -49,5 +50,17 @@ router.post('/gastos', saveGasto)
 router.delete('/gastos/:id', deleteGasto)
 
 router.put('/gastos/:id', updateGasto)
+
+
+//seccion deudas
+router.get('/deudas/user/:id', getDeudas)
+
+router.get('/deudas/:id', getDeuda)
+
+router.post('/deudas', saveDeuda)
+
+router.delete('/deudas/:id', deleteDeuda)
+
+router.put('/deudas/:id', updateDeuda)
 
 export default router

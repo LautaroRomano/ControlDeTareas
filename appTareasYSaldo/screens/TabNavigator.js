@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
-import IngresosScreen from './IngresosScreen';
+import IngresosScreen from './seccionIngresos/IngresosScreen';
 
 const Tab = createBottomTabNavigator();
 

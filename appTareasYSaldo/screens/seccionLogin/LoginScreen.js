@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { useIsFocused } from '@react-navigation/core';
 
-import { getUsers } from '../api';
-import Layout from '../components/Layout';
 
-import { saveJSON, getJSON } from '../asyncStoreControl/aStorageController'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input } from 'react-native-elements';
+
+import { getUsers } from '../../api';
+import Layout from '../../components/seccionTareas/Layout';
+
+import { saveJSON, getJSON } from '../../asyncStoreControl/aStorageController'
 
 let ingreso = false;
 
@@ -20,6 +23,7 @@ const LoginScreen = () => {
   const traerusuarios = async () => {
     const data = await getUsers();
     setusuarios(data);
+    ingreso = false;
   }
 
   const traerusuariosStorage = async () => {
@@ -51,18 +55,36 @@ const LoginScreen = () => {
   return (
     <Layout >
       <View style={styles.view}>
-        <TextInput
+        <Input
           style={styles.input}
           placeholder="Ingrese su usuario"
           placeholderTextColor="#546574"
           onChangeText={async (text) => { handlerChange('user', text) }}
+          value={async()=>{return await getJSON('@userkey');}}
+          leftIcon={
+            <Icon style={styles.ico}
+              name='user'
+              size={24}
+              color='tomato'
+            />
+          }
         />
-        <TextInput
-          style={styles.input}
+
+        <Input style={styles.input}
           placeholder="Ingrese su contraseña"
           placeholderTextColor="#546574"
           onChangeText={async (text) => { handlerChange('password', text) }}
-        />
+          secureTextEntry={true} 
+          value={async()=>{return await getJSON('@userkey');}}
+          leftIcon={
+            <Icon style={styles.ico}
+              name='lock'
+              size={24}
+              color='tomato'
+            />
+          }
+          />
+
         <TouchableOpacity style={styles.btnSave} onPress={() => {
           if (usuarios) {
             for (let i = 0; i < usuarios.length; i++) {
@@ -74,6 +96,7 @@ const LoginScreen = () => {
             }
             if (!ingreso) {
               Alert.alert('Ocurrio un error', 'Puede que los datos ingresados sean invalidos, intente nuevamente');
+              console.log('ingreso...')
             }
           } else {
             Alert.alert('Error al conectar con la base de datos');
@@ -125,6 +148,11 @@ const styles = StyleSheet.create({
     color: "tomato",
     marginTop: 15,
     fontSize: 15
+  },
+  ico:{
+    position: 'absolute',
+    top: -2, 
+    left: 15
   }
 
 })

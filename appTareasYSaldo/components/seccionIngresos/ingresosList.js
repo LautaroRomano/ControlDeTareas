@@ -4,7 +4,7 @@ import { useIsFocused } from '@react-navigation/core';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Ingresositems from './ingresositems';
-import { getIngresos, deleteIngreso } from '../api';
+import { getIngresos, deleteIngreso } from '../../api';
 
 import { useNavigation } from '@react-navigation/native';
 

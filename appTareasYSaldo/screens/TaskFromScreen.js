@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 
-import Layout from '../components/Layout';
+import Layout from '../components/seccionTareas/Layout';
 import { saveTask,getTask,updateTask } from '../api';
 
 const TaskFromScreen = ({navigation,route}) => {

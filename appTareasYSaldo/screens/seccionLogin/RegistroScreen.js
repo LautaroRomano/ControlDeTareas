@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-import {saveUser} from '../api';
-import Layout from '../components/Layout';
+import {saveUser} from '../../api';
+import Layout from '../../components/seccionTareas/Layout';
 
 const RegistroScreen = () => {
 
