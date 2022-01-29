@@ -1,0 +1,4 @@
+@taskKey -> tareas 
+@ingresosKey -> ingresos 
+@gastosKey -> gastos 
+@deudasKey -> deudas 

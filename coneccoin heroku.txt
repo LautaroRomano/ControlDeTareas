@@ -1,4 +1,0 @@
-//conexion a la baze de datos heroku
-Created cleardb-octagonal-85684 as CLEARDB_DATABASE_URL
-
-mysql://bb60f724e3c51a:58623253@us-cdbr-east-05.cleardb.net/heroku_4cc4065f165e90e?reconnect=true
