@@ -4,7 +4,7 @@ _Este proyecto es para los que quieran gestionar sus ingresos y sus gastos, adem
 
 ### Pre-requisitos 📋
 
-_Para usar este proyecto debes tener instalado Node.js **https://nodejs.org/es/**https://nodejs.org/es/_
+_Para usar este proyecto debes tener instalado Node.js **https://nodejs.org/es/**
 
 ## Comenzando 🚀
 
@@ -35,4 +35,4 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 ## Autores ✒️
 
-* **Romano Lautaro** - *Trabajo Inicial* - [villanuevand](https://github.com/LautaroRomano)
+* **Romano Lautaro** - *Trabajo Inicial* - [Romano Lautaro](https://github.com/LautaroRomano)
